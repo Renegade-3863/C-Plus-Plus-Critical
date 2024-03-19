@@ -12,4 +12,9 @@ Updated something about the difference between const modifier and #define direct
 2024/03/18
    
 Updated something about the C++11 new features, along with my partial definition about cyclic singly linked list. (Namely: C11.h, C11.cpp)
-    
+
+2024/03/19
+
+Updated something about the C++11 new features(brace initialization and return by value optimization feature), along with something more about static data members inside C++ classes
+
+
