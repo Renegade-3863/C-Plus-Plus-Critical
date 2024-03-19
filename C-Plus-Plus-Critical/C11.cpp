@@ -85,21 +85,6 @@ bool ll_traverse(const LinkList& head) {
 }
 
 void testing_brace_Init() {
-    // Some discussions about brace initialization in C++11 or later C++17
-    // Why do we need such new tech of intialization?
-    // Earlier when we use C99, we could only use ()/= to do initialization of an object
-    // It would introduce things called "dual meaning":
-    // 1. What is this line?
-    // (Check the difinition of Word in C11.h)
-    //      Word word1 = word2;         -> absolutely a copy construction! Not assignment
-    // 2. What is this line?
-    //      Word word();                -> are you declaring a new function prototype(return type Word)
-    //                                  -> or just using default constructor for creating word?
-    //                                  -> if you have user-defined constructor, this may be fine, but it's still not good
-    // => braces would solve this confusion:
-    //      Word word1{word2};
-    //      Word word{};
-    // This could be good reasons for C++11 to introduce brace initialization
     std::cout << "Initializing and allocating spacess for the head node of a linked list..." << std::endl;
     LinkList head_test = new LNode{ -1, nullptr };
     delete head_test;
@@ -180,28 +165,4 @@ void testing_brace_Init() {
     std::cout << "Process terminated, deleting the ll created.." << std::endl;
     ll_deletion(head);
     Sleep(3000);
-}
-
-// This function is used to test the Compiler optimization option newly offered in C++11/C++17
-void Testing_RVO() {
-    // Don't mind the name, just for fun~
-    Word movie{ "honkaistarrail" }; movie.print();
-    Word song = movie.to_upper_case(); song.print();
-    // Here as routine, you may expect the console to print three copy message, but it turns out that
-    // only one copy is printed
-    // This is the RVO (return value optimization)
-    // The compiler checked the code segment of the source file
-    // It notice that the temporary object returned by movie.to_upper_case() is directly copied into song
-    // So there's no meaning creating an other temporary object to store x and return that temp one.
-    // It will directly bing song(which is outside the function call of to_upper_case) to the x created within to_upper_case.
-    // You could treat the operation as:
-    // void to_upper_case(Word& song) const
-    // {
-    //      Word song(*this);
-    //      for(char* p = song.str; *p != '\0'; p++)
-    //          *p += 'A' - 'a';
-    //      (No return)
-    // }
-    // Notice that RVO is optional is C++11, but compulsory in C++17
-    // In C++11, one could turn off RVO by adding compile option -fno-elide-constructors after the g++ compile command
 }
