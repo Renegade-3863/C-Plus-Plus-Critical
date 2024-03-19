@@ -16,9 +16,27 @@ class Word {
 private:
     int frequency;
     char* str;
+    void set(int f, const char* s)
+        { frequency = f; str = new char[strlen(s) + 1]; strcpy(str, s); }
 public:
-    Word() { frequency = 0; str = nullptr; } // Default constructor
+    // User defined conversion constructor
+    Word(const char* s, int k = 1) { set(k, s); std::cout << "conversion\n"; }
+    // User defined copy constructor
+    Word(const Word& w) { set(w.frequency, w.str); std::cout << "copy\n";  }
+    // information visualization
+    void print() const { std::cout << str << " : " << frequency << std::endl; }
+    // create a temporary object with str member in upper case
+    Word to_upper_case() const
+    {
+        Word x(*this);
+        for (char* p = x.str; *p != '\0'; p++)
+            *p += 'A' - 'a';
+        return x;
+    }
 };
+
+// RVO => Return Value Optimization
+void Testing_RVO();
 
 // Some other features related to normal data structures, we use a struct for combined description
 // Don't mind I use LNode here, you could also review something about LinkList, couldn't you?
