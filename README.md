@@ -17,4 +17,8 @@ Updated something about the C++11 new features, along with my partial definition
 
 Updated something about the C++11 new features(brace initialization and return by value optimization feature), along with something more about static data members inside C++ classes
 
+2024/03/20
+
+Updated something about the C++11 smart pointer: What are they and how to use them (To be updated: deadlock problem for shared_ptr) (Namely: Intelptr.h, Intelptr.cpp)
+
 
