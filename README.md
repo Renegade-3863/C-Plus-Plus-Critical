@@ -21,4 +21,8 @@ Updated something about the C++11 new features(brace initialization and return b
 
 Updated something about the C++11 smart pointer: What are they and how to use them (To be updated: deadlock problem for shared_ptr) (Namely: Intelptr.h, Intelptr.cpp)
 
+2024/03/22
+
+Updated something about the C++11 decltype and revision of some principles about C++ template(see templateC11.h)
+
 
