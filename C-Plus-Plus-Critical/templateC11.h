@@ -36,6 +36,10 @@ template<> void ft(double x, float y) {
     std::cout << "The template is not used for function generation\n";
 }
 
+// 一些有关模板实例化的细节:
+// 如果我们想要通过代码命令编译器生成具体的某个实例，那么只能在该模板的同一命名空间下进行
+template void ft<char, double>(char x, double y);
+
 // 这样编译器就可以在编译时通过x与y的类型来推断xplusy的类型并动态指明xplusy的类型了
 
 // 最后，再来关注下面这个问题
